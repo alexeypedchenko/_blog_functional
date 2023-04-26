@@ -1,20 +1,32 @@
-import React from "react";
+import React, { FC } from "react";
 
-const Article = () => {
+type Props = {
+  title?: string;
+  description?: string;
+  category?: string;
+  publishedAt?: string;
+};
+
+const Article: FC<Props> = ({
+  title = "title",
+  description = "description",
+  category = "category",
+  publishedAt = new Date(),
+}) => {
   return (
     <div className="border flex flex-col gap-5 min-h-[250px] p-4 rounded-xl">
       <div className="flex items-start justify-between">
         <button className="text-sm flex items-center gap-1 border-b">
-          {/* • */}Category
+          {/* • */}
+          {category}
         </button>
-        <span className="text-sm">{new Date().toLocaleDateString()}</span>
+        <span className="text-sm">
+          {new Date(publishedAt).toLocaleDateString()}
+        </span>
       </div>
-      <h3 className="text-xl font-bold">Some article title</h3>
+      <h3 className="text-xl font-bold">{title}</h3>
 
-      <p className="mt-auto">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam,
-        rerum...
-      </p>
+      <p className="mt-auto">{description}</p>
 
       <div className="flex justify-between items-center">
         {/* <div className="flex flex-wrap gap-2">

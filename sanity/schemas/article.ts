@@ -24,10 +24,10 @@ export default {
       type: 'text',
     },
     {
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
+      name: 'category',
+      title: 'Category',
+      type: 'reference',
+      to: {type: 'category'},
     },
     {
       name: 'publishedAt',
@@ -37,3 +37,16 @@ export default {
     },
   ],
 }
+
+// {
+//   name: 'tags',
+//   title: 'Tags',
+//   type: 'array',
+//   validation: (Rule: any) => Rule.unique(),
+//   of: [
+//     {
+//       type: 'reference',
+//       to: {type: 'category'},
+//     },
+//   ],
+// },
