@@ -1,5 +1,5 @@
 Article
-- title
-- description
-- category
-- tags
+- title +
+- description +
+- category +
+- tags -
