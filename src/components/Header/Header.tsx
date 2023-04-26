@@ -7,10 +7,10 @@ const links = [
     name: "Статьи",
     href: "/articles",
   },
-  // {
-  //   name: "Категории",
-  //   href: '/'
-  // },
+  {
+    name: "Категории",
+    href: "/categories",
+  },
 ];
 
 const Header = () => {

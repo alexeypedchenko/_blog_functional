@@ -3,9 +3,9 @@ import React, { FC } from "react";
 import clsx from "clsx";
 import { usePagination, DOTS } from "@/hooks/usePagination";
 import styles from "./Pagination.module.css";
+import Link from "next/link";
 
 type Props = {
-  onPageChange: (page: number | string) => void;
   totalCount: number;
   currentPage: number;
   pageSize: number;
@@ -13,7 +13,6 @@ type Props = {
 };
 
 const Pagination: FC<Props> = ({
-  onPageChange,
   totalCount,
   currentPage,
   pageSize,
@@ -26,14 +25,6 @@ const Pagination: FC<Props> = ({
     pageSize,
   });
 
-  const onNext = () => {
-    onPageChange(currentPage + 1);
-  };
-
-  const onPrevious = () => {
-    onPageChange(currentPage - 1);
-  };
-
   const lastPage = paginationRange[paginationRange.length - 1];
 
   if (currentPage === 0 || paginationRange.length < 2) {
@@ -41,53 +32,65 @@ const Pagination: FC<Props> = ({
   }
 
   return (
-    <ul className={styles.pagination}>
+    <div className={styles.pagination}>
       {/* arrowLeft */}
-      <li
-        className={clsx(styles.item, {
-          [styles.disabled]: currentPage === 1,
-        })}
-        onClick={onPrevious}
-      >
-        <svg width={24} height={24} className="rotate-180">
-          <use xlinkHref="./icons-sprite.svg#icon-arrow-right" />
-        </svg>
-      </li>
+      {currentPage === 1 ? (
+        <div className={clsx(styles.item, styles.disabled)}>
+          <svg width={24} height={24} className="rotate-180">
+            <use xlinkHref="./icons-sprite.svg#icon-arrow-right" />
+          </svg>
+        </div>
+      ) : (
+        <Link
+          className={styles.item}
+          href={`/articles?page=${currentPage - 1}`}
+        >
+          <svg width={24} height={24} className="rotate-180">
+            <use xlinkHref="./icons-sprite.svg#icon-arrow-right" />
+          </svg>
+        </Link>
+      )}
 
       {paginationRange.map((pageNumber, idx) => {
         if (pageNumber === DOTS) {
           return (
-            <li key={idx} className={clsx(styles.item, styles.dots)}>
+            <div key={idx} className={clsx(styles.item, styles.dots)}>
               &#8230;
-            </li>
+            </div>
           );
         }
 
         return (
-          <li
+          <Link
             key={idx}
             className={clsx(styles.item, {
               [styles.selected]: pageNumber === currentPage,
             })}
-            onClick={() => onPageChange(pageNumber)}
+            href={`/articles?page=${pageNumber}`}
           >
             {pageNumber}
-          </li>
+          </Link>
         );
       })}
 
       {/* arrowRight */}
-      <li
-        className={clsx(styles.item, {
-          [styles.disabled]: currentPage === lastPage,
-        })}
-        onClick={onNext}
-      >
-        <svg width={24} height={24}>
-          <use xlinkHref="./icons-sprite.svg#icon-arrow-right" />
-        </svg>
-      </li>
-    </ul>
+      {currentPage === lastPage ? (
+        <div className={clsx(styles.item, styles.disabled)}>
+          <svg width={24} height={24}>
+            <use xlinkHref="./icons-sprite.svg#icon-arrow-right" />
+          </svg>
+        </div>
+      ) : (
+        <Link
+          className={styles.item}
+          href={`/articles?page=${currentPage + 1}`}
+        >
+          <svg width={24} height={24}>
+            <use xlinkHref="./icons-sprite.svg#icon-arrow-right" />
+          </svg>
+        </Link>
+      )}
+    </div>
   );
 };
 
