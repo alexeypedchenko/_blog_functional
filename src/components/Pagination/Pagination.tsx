@@ -2,7 +2,7 @@
 import React, { FC } from "react";
 import clsx from "clsx";
 import { usePagination, DOTS } from "@/hooks/usePagination";
-import "./pagination.css";
+import styles from "./Pagination.module.css";
 
 type Props = {
   onPageChange: (page: number | string) => void;
@@ -41,24 +41,33 @@ const Pagination: FC<Props> = ({
   }
 
   return (
-    <ul className="flex w-full justify-center mt-5">
+    <ul className={styles.pagination}>
+      {/* arrowLeft */}
       <li
-        className={clsx("pagination-item", {
-          disabled: currentPage === 1,
+        className={clsx(styles.item, {
+          [styles.disabled]: currentPage === 1,
         })}
         onClick={onPrevious}
       >
-        <div className="arrow left" />
+        <svg width={24} height={24} className="rotate-180">
+          <use xlinkHref="./icons-sprite.svg#icon-arrow-right" />
+        </svg>
       </li>
-      {paginationRange.map((pageNumber) => {
+
+      {paginationRange.map((pageNumber, idx) => {
         if (pageNumber === DOTS) {
-          return <li className="pagination-item dots">&#8230;</li>;
+          return (
+            <li key={idx} className={clsx(styles.item, styles.dots)}>
+              &#8230;
+            </li>
+          );
         }
 
         return (
           <li
-            className={clsx("pagination-item", {
-              selected: pageNumber === currentPage,
+            key={idx}
+            className={clsx(styles.item, {
+              [styles.selected]: pageNumber === currentPage,
             })}
             onClick={() => onPageChange(pageNumber)}
           >
@@ -66,13 +75,17 @@ const Pagination: FC<Props> = ({
           </li>
         );
       })}
+
+      {/* arrowRight */}
       <li
-        className={clsx("pagination-item", {
-          disabled: currentPage === lastPage,
+        className={clsx(styles.item, {
+          [styles.disabled]: currentPage === lastPage,
         })}
         onClick={onNext}
       >
-        <div className="arrow right" />
+        <svg width={24} height={24}>
+          <use xlinkHref="./icons-sprite.svg#icon-arrow-right" />
+        </svg>
       </li>
     </ul>
   );

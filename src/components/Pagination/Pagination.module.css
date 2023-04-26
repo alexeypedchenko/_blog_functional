@@ -1,0 +1,14 @@
+.pagination {
+  @apply flex w-full justify-center mt-5 gap-1;
+}
+.item {
+  @apply cursor-pointer w-8 h-8 text-sm flex items-center justify-center rounded-full
+    hover:bg-gray-100;
+}
+.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}
+.selected {
+  @apply bg-gray-200 pointer-events-none;
+}
