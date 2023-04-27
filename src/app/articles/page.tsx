@@ -23,7 +23,7 @@ const page = async ({ params, searchParams }: Props) => {
       <h1 className="text-xl font-bold mb-5">Articles</h1>
 
       <div className="grid grid-cols-3 gap-10">
-        {articles.map((item: any) => (
+        {articles?.map((item: any) => (
           <Article key={item._id} {...item} />
         ))}
       </div>
@@ -32,7 +32,7 @@ const page = async ({ params, searchParams }: Props) => {
         currentPage={currentPage}
         totalCount={total}
         pageSize={PAGE_SIZE}
-        // onPageChange={(page) => console.log("page:", page)}
+        url="articles"
       />
     </div>
   );

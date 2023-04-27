@@ -9,15 +9,13 @@ type Props = {
   totalCount: number;
   currentPage: number;
   pageSize: number;
+  url: string;
   siblingCount?: number;
 };
 
-const Pagination: FC<Props> = ({
-  totalCount,
-  currentPage,
-  pageSize,
-  siblingCount = 1,
-}) => {
+const Pagination: FC<Props> = (props) => {
+  const { totalCount, currentPage, pageSize, url, siblingCount = 1 } = props;
+
   const paginationRange = usePagination({
     currentPage,
     totalCount,
@@ -41,10 +39,7 @@ const Pagination: FC<Props> = ({
           </svg>
         </div>
       ) : (
-        <Link
-          className={styles.item}
-          href={`/articles?page=${currentPage - 1}`}
-        >
+        <Link className={styles.item} href={`/${url}?page=${currentPage - 1}`}>
           <svg width={24} height={24} className="rotate-180">
             <use xlinkHref="./icons-sprite.svg#icon-arrow-right" />
           </svg>
@@ -66,7 +61,7 @@ const Pagination: FC<Props> = ({
             className={clsx(styles.item, {
               [styles.selected]: pageNumber === currentPage,
             })}
-            href={`/articles?page=${pageNumber}`}
+            href={`/${url}?page=${pageNumber}`}
           >
             {pageNumber}
           </Link>
@@ -81,10 +76,7 @@ const Pagination: FC<Props> = ({
           </svg>
         </div>
       ) : (
-        <Link
-          className={styles.item}
-          href={`/articles?page=${currentPage + 1}`}
-        >
+        <Link className={styles.item} href={`/${url}?page=${currentPage + 1}`}>
           <svg width={24} height={24}>
             <use xlinkHref="./icons-sprite.svg#icon-arrow-right" />
           </svg>

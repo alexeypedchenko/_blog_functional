@@ -15,7 +15,7 @@ export const client = createClient({
 });
 
 // // Wrap the cache function in a way that reuses the TypeScript definitions
-// const clientFetch = cache(client.fetch.bind(client));
+export const clientFetch = cache(client.fetch.bind(client));
 
 // // Now use it just like before, fully deduped, cached and optimized by react
 // const data = await clientFetch(groq`*[]`);
