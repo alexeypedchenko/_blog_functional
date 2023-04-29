@@ -1,5 +1,6 @@
-import Link from "next/link";
 import React, { FC } from "react";
+import Link from "next/link";
+import Icon from "@/components/UI/Icon";
 
 type Props = {
   slug: string;
@@ -35,9 +36,7 @@ const Article: FC<Props> = (props) => {
           href={`/articles/${slug}`}
         >
           Подробнее
-          <svg width={24} height={24}>
-            <use xlinkHref="./icons-sprite.svg#icon-arrow-right" />
-          </svg>
+          <Icon name="arrow-right" />
         </Link>
       </div>
     </div>

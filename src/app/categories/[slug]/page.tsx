@@ -1,25 +1,20 @@
-import { getArticlesByCat, getCategory } from "@/api";
+import { getCategory } from "@/api";
+import { getArticlesByCat } from "@/api/articles";
 import Article from "@/components/Article/Article";
 import Pagination from "@/components/Pagination/Pagination";
-const PAGE_SIZE = 1;
+import { PageProps } from "@/types/PageProps";
+const PAGE_SIZE = 3;
 
-type Props = {
-  params: { slug: string };
-  searchParams: { [key: string]: string | undefined };
-};
-
-const page = async ({ params, searchParams }: Props) => {
+const page = async ({ params, searchParams }: PageProps) => {
   const { slug } = params;
   const { page } = searchParams;
   const category = await getCategory(slug);
-  console.log("category:", category);
 
   const currentPage = page !== undefined ? +page : 1;
   const start = currentPage * PAGE_SIZE - PAGE_SIZE;
   const end = currentPage * PAGE_SIZE;
 
   const { articles, total } = await getArticlesByCat(start, end, slug);
-  console.log("articles:", articles);
 
   return (
     <div>

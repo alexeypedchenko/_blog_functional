@@ -23,5 +23,11 @@ export default {
       title: 'Description',
       type: 'text',
     },
+    {
+      name: 'publishedAt',
+      type: 'datetime',
+      title: 'Published At',
+      initialValue: new Date().toISOString(),
+    },
   ],
 }

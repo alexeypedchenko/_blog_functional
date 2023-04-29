@@ -35,6 +35,11 @@ export default {
       title: 'Published At',
       initialValue: new Date().toISOString(),
     },
+    {
+      name: 'body',
+      type: 'blockContent',
+      title: 'Body',
+    },
   ],
 }
 

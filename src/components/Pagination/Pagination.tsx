@@ -1,9 +1,9 @@
-"use client";
 import React, { FC } from "react";
+import Link from "next/link";
 import clsx from "clsx";
 import { usePagination, DOTS } from "@/hooks/usePagination";
+import Icon from "@/components/UI/Icon";
 import styles from "./Pagination.module.css";
-import Link from "next/link";
 
 type Props = {
   totalCount: number;
@@ -30,59 +30,70 @@ const Pagination: FC<Props> = (props) => {
   }
 
   return (
-    <div className={styles.pagination}>
-      {/* arrowLeft */}
-      {currentPage === 1 ? (
-        <div className={clsx(styles.item, styles.disabled)}>
-          <svg width={24} height={24} className="rotate-180">
-            <use xlinkHref="./icons-sprite.svg#icon-arrow-right" />
-          </svg>
-        </div>
-      ) : (
-        <Link className={styles.item} href={`/${url}?page=${currentPage - 1}`}>
-          <svg width={24} height={24} className="rotate-180">
-            <use xlinkHref="./icons-sprite.svg#icon-arrow-right" />
-          </svg>
-        </Link>
-      )}
-
-      {paginationRange.map((pageNumber, idx) => {
-        if (pageNumber === DOTS) {
-          return (
-            <div key={idx} className={clsx(styles.item, styles.dots)}>
-              &#8230;
-            </div>
-          );
-        }
-
-        return (
+    <>
+      <div className={styles.pagination}>
+        {/* arrowLeft */}
+        {currentPage === 1 ? (
+          <div className={clsx(styles.item, styles.disabled)}>
+            <Icon className="rotate-180" name="arrow-right" />
+          </div>
+        ) : (
           <Link
-            key={idx}
-            className={clsx(styles.item, {
-              [styles.selected]: pageNumber === currentPage,
-            })}
-            href={`/${url}?page=${pageNumber}`}
+            className={styles.item}
+            href={`/${url}?page=${currentPage - 1}`}
           >
-            {pageNumber}
+            <Icon className="rotate-180" name="arrow-right" />
           </Link>
-        );
-      })}
+        )}
 
-      {/* arrowRight */}
-      {currentPage === lastPage ? (
-        <div className={clsx(styles.item, styles.disabled)}>
-          <svg width={24} height={24}>
-            <use xlinkHref="./icons-sprite.svg#icon-arrow-right" />
-          </svg>
-        </div>
-      ) : (
-        <Link className={styles.item} href={`/${url}?page=${currentPage + 1}`}>
-          <svg width={24} height={24}>
-            <use xlinkHref="./icons-sprite.svg#icon-arrow-right" />
-          </svg>
-        </Link>
-      )}
-    </div>
+        {paginationRange.map((pageNumber, idx) => {
+          if (pageNumber === DOTS) {
+            return (
+              <div key={idx} className={clsx(styles.item, styles.dots)}>
+                &#8230;
+              </div>
+            );
+          }
+
+          return (
+            <Link
+              key={idx}
+              className={clsx(styles.item, {
+                [styles.selected]: pageNumber === currentPage,
+              })}
+              href={`/${url}?page=${pageNumber}`}
+            >
+              {pageNumber}
+            </Link>
+          );
+        })}
+
+        {/* arrowRight */}
+        {currentPage === lastPage ? (
+          <div className={clsx(styles.item, styles.disabled)}>
+            <Icon name="arrow-right" />
+          </div>
+        ) : (
+          <Link
+            className={styles.item}
+            href={`/${url}?page=${currentPage + 1}`}
+          >
+            <Icon name="arrow-right" />
+          </Link>
+        )}
+      </div>
+      {/* <div className="flex justify-center gap-5">
+        <p>
+          <span className="font-bold">totalCount:</span> {totalCount}
+        </p>
+        <p>
+          <span className="font-bold">currentPage:</span> {currentPage}
+        </p>
+        <p>
+          <span className="font-bold">pageSize:</span> {pageSize}
+        </p>
+      </div> */}
+    </>
   );
 };
 

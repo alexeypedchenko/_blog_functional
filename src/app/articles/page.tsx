@@ -1,22 +1,30 @@
+import { redirect } from "next/navigation";
+import { getArticles } from "@/api/articles";
+import { PageProps } from "@/types/PageProps";
 import Article from "@/components/Article/Article";
-import { getArticles } from "@/api";
 import Pagination from "@/components/Pagination/Pagination";
-
-type Props = {
-  params: { slug: string };
-  searchParams: { [key: string]: string | undefined };
-};
 
 const PAGE_SIZE = 3;
 
-const page = async ({ params, searchParams }: Props) => {
+const FIRST_PAGE = "/articles?page=1";
+
+const page = async ({ params, searchParams }: PageProps) => {
   const { page } = searchParams;
+
+  // if (page === undefined) {
+  //   redirect(FIRST_PAGE);
+  // }
 
   const currentPage = page !== undefined ? +page : 1;
   const start = currentPage * PAGE_SIZE - PAGE_SIZE;
   const end = currentPage * PAGE_SIZE;
 
   const { articles, total } = await getArticles(start, end);
+
+  // prevent empty page with incorrect page number
+  if (total > 0 && articles.length === 0) {
+    redirect(FIRST_PAGE);
+  }
 
   return (
     <div>

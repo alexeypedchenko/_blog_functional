@@ -1,70 +1,10 @@
 import { clientFetch } from "@/lib/sanity/sanity";
 
-export const getArticlesCount = async () => {};
-
-export const getArticles = async (start?: number, end?: number) => {
-  const paginate =
-    start !== undefined && end !== undefined ? `[${start}...${end}]` : "";
-
-  const GROQ = `{
-    "articles": *[_type == "article"] | order(publishedAt asc) ${paginate} {
-      _id,
-      title,
-      description,
-      category -> {
-        title,
-        "slug": slug.current
-      },
-      publishedAt,
-      "slug": slug.current
-    },
-    "total": count(*[_type == "article"])
-  }`;
-  const articles = await clientFetch(GROQ);
-  return articles;
-};
-export const getArticlesByCat = async (
-  start?: number,
-  end?: number,
-  category?: string
-) => {
-  const paginate =
-    start !== undefined && end !== undefined ? `[${start}...${end}]` : "";
-
-  const GROQ = `{
-    "articles": *[_type == "article" && category->slug.current == "${category}" ] | order(publishedAt asc) ${paginate} {
-      _id,
-      title,
-      description,
-      category -> {
-        title,
-        "slug": slug.current
-      },
-      publishedAt,
-      "slug": slug.current
-    },
-    "total": count(*[_type == "article" && category->slug.current == "${category}"])
-  }`;
-  const articles = await clientFetch(GROQ);
-  return articles;
-};
-
-export const getArticle = async (slug: string) => {
-  const GROQ = `*[_type == "article" && slug.current == "${slug}"][0] {
-    title,
-    description,
-    category -> {
-      title,
-      "slug": slug.current
-    },
-    publishedAt,
-  }`;
-  const article = await clientFetch(GROQ);
-  return article;
-};
+// *[!(_id in path("drafts.**"))] // _id matches anything that is *not* in the drafts-path
+const isPublished = '!(_id in path("drafts.**"))';
 
 export const getCategories = async () => {
-  const GROQ = `*[_type == "category"] {
+  const GROQ = `*[_type == "category" && ${isPublished}] | order(publishedAt asc) {
     _id,
     title,
     description,

@@ -1,7 +1,18 @@
-import { getArticle } from "@/api";
+import { getArticle, getArticleSlugList } from "@/api/articles";
+import { PageProps } from "@/types/PageProps";
 import Link from "next/link";
 
-const page = async ({ params }: { params: { slug: string } }) => {
+// Return a list of `params` to populate the [slug] dynamic segment
+// https://beta.nextjs.org/docs/api-reference/generate-static-params
+export async function generateStaticParams() {
+  const articles = await getArticleSlugList();
+
+  return articles.map((article: { slug: string }) => ({
+    slug: article.slug,
+  }));
+}
+
+const page = async ({ params }: PageProps) => {
   const { slug } = params;
   const article = await getArticle(slug);
 
