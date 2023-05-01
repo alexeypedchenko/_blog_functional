@@ -1,0 +1,15 @@
+.box h1 {
+  @apply text-3xl;
+}
+.box h2 {
+  @apply text-2xl;
+}
+.box h3 {
+  @apply text-xl;
+}
+.box h4 {
+  @apply text-lg;
+}
+.box p {
+  min-height: 1rem;
+}

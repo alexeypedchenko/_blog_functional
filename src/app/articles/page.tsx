@@ -22,9 +22,9 @@ const page = async ({ params, searchParams }: PageProps) => {
   const { articles, total } = await getArticles(start, end);
 
   // prevent empty page with incorrect page number
-  if (total > 0 && articles.length === 0) {
-    redirect(FIRST_PAGE);
-  }
+  // if (total > 0 && articles.length === 0) {
+  //   redirect(FIRST_PAGE);
+  // }
 
   return (
     <div>

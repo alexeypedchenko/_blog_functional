@@ -2,6 +2,7 @@ import { getCategory } from "@/api";
 import { getArticlesByCat } from "@/api/articles";
 import Article from "@/components/Article/Article";
 import Pagination from "@/components/Pagination/Pagination";
+import Breadcrumbs from "@/components/UI/Breadcrumbs/Breadcrumbs";
 import { PageProps } from "@/types/PageProps";
 const PAGE_SIZE = 3;
 
@@ -18,6 +19,15 @@ const page = async ({ params, searchParams }: PageProps) => {
 
   return (
     <div>
+      <Breadcrumbs
+        list={[
+          {
+            name: "Категории",
+            href: "/categories",
+          },
+        ]}
+        current={category.title}
+      />
       <div className="mb-10">
         <h1 className="text-2xl font-bold mb-5">{category.title}</h1>
         <p>{category.description}</p>
