@@ -4,7 +4,17 @@ import Article from "@/components/Article/Article";
 import Pagination from "@/components/Pagination/Pagination";
 import Breadcrumbs from "@/components/UI/Breadcrumbs/Breadcrumbs";
 import { PageProps } from "@/types/PageProps";
+
 const PAGE_SIZE = 3;
+
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = params;
+  const category = await getCategory(slug);
+  return {
+    title: category.title,
+    description: category.description,
+  };
+}
 
 const page = async ({ params, searchParams }: PageProps) => {
   const { slug } = params;
