@@ -1,12 +1,13 @@
 import React from "react";
 import Link from "next/link";
-import { getCategories } from "@/api";
+import { getCategories } from "@/api/categories.api";
 
 const page = async () => {
   const categories = await getCategories();
 
   return (
     <div>
+      <h1 className="h1 mb-[100px]">Категории</h1>
       <div className="grid grid-cols-4 gap-5">
         {categories.map((el: any) => (
           <Link

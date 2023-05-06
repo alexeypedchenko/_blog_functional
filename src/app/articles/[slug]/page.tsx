@@ -1,4 +1,4 @@
-import { getArticle, getArticleSlugList } from "@/api/articles";
+import { getArticle, getArticleSlugList } from "@/api/articles.api";
 import Breadcrumbs from "@/components/UI/Breadcrumbs/Breadcrumbs";
 import RichText from "@/components/UI/RichText/RichText";
 import { PageProps } from "@/types/PageProps";

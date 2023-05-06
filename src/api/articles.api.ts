@@ -1,4 +1,5 @@
 import { clientFetch } from "@/lib/sanity/sanity";
+import { IArticle } from "@/types/ArticleType";
 
 // *[!(_id in path("drafts.**"))] // _id matches anything that is *not* in the drafts-path
 const isPublished = '!(_id in path("drafts.**"))';
@@ -8,6 +9,23 @@ export const getArticleSlugList = async () => {
     "slug": slug.current
   }`;
   const articles = await clientFetch(GROQ);
+  return articles;
+};
+
+export const getLatestArticles = async (count: number) => {
+  const paginate = `[0...${count}]`;
+  const GROQ = `*[_type == "article" && ${isPublished}] | order(publishedAt asc) ${paginate} {
+    _id,
+    title,
+    description,
+    category -> {
+      title,
+      "slug": slug.current
+    },
+    publishedAt,
+    "slug": slug.current
+  }`;
+  const articles = await clientFetch<IArticle[]>(GROQ);
   return articles;
 };
 

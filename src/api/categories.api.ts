@@ -3,6 +3,18 @@ import { clientFetch } from "@/lib/sanity/sanity";
 // *[!(_id in path("drafts.**"))] // _id matches anything that is *not* in the drafts-path
 const isPublished = '!(_id in path("drafts.**"))';
 
+export const getLatestCategories = async (count: number) => {
+  const paginate = `[0...${count}]`;
+  const GROQ = `*[_type == "category" && ${isPublished}] | order(publishedAt asc) ${paginate} {
+    _id,
+    title,
+    description,
+    "slug": slug.current
+  }`;
+  const categories = await clientFetch(GROQ);
+  return categories;
+};
+
 export const getCategories = async () => {
   const GROQ = `*[_type == "category" && ${isPublished}] | order(publishedAt asc) {
     _id,

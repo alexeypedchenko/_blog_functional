@@ -1,5 +1,5 @@
-import { getCategory } from "@/api";
-import { getArticlesByCat } from "@/api/articles";
+import { getCategory } from "@/api/categories.api";
+import { getArticlesByCat } from "@/api/articles.api";
 import Article from "@/components/Article/Article";
 import Pagination from "@/components/Pagination/Pagination";
 import Breadcrumbs from "@/components/UI/Breadcrumbs/Breadcrumbs";

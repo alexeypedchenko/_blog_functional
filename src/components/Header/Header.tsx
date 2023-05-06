@@ -1,7 +1,12 @@
 import React from "react";
 import Link from "next/link";
+import styles from "./Header.module.css";
 
 const links = [
+  {
+    name: "Главная",
+    href: "/",
+  },
   {
     name: "Статьи",
     href: "/articles",
@@ -14,19 +19,22 @@ const links = [
 
 const Header = () => {
   return (
-    <header className="absolute w-full top-0 left-0 h-[60px] border-b">
-      <div className="container h-full flex items-center">
-        <Link href="/" className="font-bold mr-40">
-          Finance.pro
-        </Link>
-        <nav className="flex gap-10 items-center">
-          {links.map((link, idx) => (
-            <div className="text-sm cursor-pointer hover:underline" key={idx}>
-              <Link href={link.href}>{link.name}</Link>
-            </div>
-          ))}
-        </nav>
-      </div>
+    <header className="sticky top-0 mb-20 h-[60px] flex items-center bg-white">
+      <Link href="/" className={styles.logo}>
+        <span>Finance</span>
+        .pro
+      </Link>
+      <nav className="flex gap-10 items-center">
+        {links.map((link, idx) => (
+          <Link
+            className="text-xl cursor-pointer hover:underline"
+            key={idx}
+            href={link.href}
+          >
+            {link.name}
+          </Link>
+        ))}
+      </nav>
     </header>
   );
 };

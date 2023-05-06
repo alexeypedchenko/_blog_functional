@@ -1,0 +1,7 @@
+.logo {
+  @apply text-xl font-bold mr-40;
+}
+.logo span {
+  background: var(--c-primary);
+  color: var(--c-white);
+}
