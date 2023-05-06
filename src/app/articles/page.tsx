@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
 import { getArticles } from "@/api/articles.api";
 import { PageProps } from "@/types/PageProps";
-import Article from "@/components/Article/Article";
 import Pagination from "@/components/Pagination/Pagination";
 import ArticleCard from "@/components/Card/ArticleCard/ArticleCard";
 
@@ -28,10 +27,10 @@ const page = async ({ params, searchParams }: PageProps) => {
   // }
 
   return (
-    <div className="pb-[100px]">
-      <h1 className="h1 mb-[100px]">Статьи</h1>
+    <div>
+      <h1 className="h1">Статьи</h1>
 
-      <div className="grid grid-cols-3 gap-10">
+      <div className="grid grid-cols-3 gap-y-5 gap-x-10">
         {articles?.map((item: any) => (
           <ArticleCard key={item._id} {...item} />
         ))}

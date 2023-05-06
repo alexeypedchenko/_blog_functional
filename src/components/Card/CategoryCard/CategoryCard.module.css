@@ -1,7 +1,10 @@
 .сard {
   border-top: 1px solid var(--c-primary);
   padding-top: 10px;
-  /* padding-bottom: 20px; */
+  padding-bottom: 20px;
+}
+.row {
+  @apply grid grid-cols-2;
 }
 .сard:hover .title {
   text-decoration: underline;

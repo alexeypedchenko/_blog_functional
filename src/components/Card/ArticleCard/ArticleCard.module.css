@@ -1,7 +1,6 @@
 .сard {
   border-top: 1px solid var(--c-primary);
   padding-top: 5px;
-  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -11,6 +10,7 @@
 }
 .link {
   padding-top: 20px;
+  padding-bottom: 20px;
 }
 .link:hover .title {
   text-decoration: underline;
@@ -20,5 +20,9 @@
   margin-bottom: 10px;
 }
 .category:hover {
+  text-decoration: underline;
+}
+
+.сardAll:hover .title {
   text-decoration: underline;
 }

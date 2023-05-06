@@ -26,6 +26,7 @@ body {
   max-width: min(100%, var(--max-container));
   margin: 0 auto;
   color: var(--c-primary);
+  padding-bottom: 100px;
 }
 
 .h1 {
@@ -34,20 +35,33 @@ body {
 .h2 {
   font-size: 100px;
 }
-
-.bb {
-  border-bottom: 1px solid var(--c-primary);
+.caption {
+  font-size: 24px;
+  max-width: var(--container-size);
 }
 
 .loader {
   width: 48px;
   height: 48px;
-  border: 5px solid #000;
+  border: 5px solid var(--c-primary);
   border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+}
+
+.btn {
+  @apply text-xl cursor-pointer;
+  border: 1px solid var(--c-primary);
+  background: var(--c-primary);
+  color: #fff;
+  padding: 5px 20px;
+  border-radius: 40px;
+}
+.btn:hover {
+  background: transparent;
+  color: var(--c-primary);
 }
 
 @keyframes rotation {

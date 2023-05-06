@@ -1,9 +1,12 @@
 .pagination {
-  @apply flex w-full justify-center mt-5 gap-1;
+  @apply flex w-full justify-center mt-10 gap-1;
 }
 .item {
-  @apply cursor-pointer w-8 h-8 text-sm flex items-center justify-center rounded-full
-    hover:bg-gray-100;
+  @apply cursor-pointer text-lg w-10 h-10 flex items-center justify-center rounded-full;
+  border: 1px solid transparent;
+}
+.item:hover {
+  border-color: var(--c-secondary);
 }
 .disabled {
   pointer-events: none;
@@ -14,5 +17,7 @@
   opacity: 0.8;
 }
 .selected {
-  @apply bg-gray-200 pointer-events-none;
+  @apply pointer-events-none;
+  background: var(--c-primary);
+  color: #fff;
 }

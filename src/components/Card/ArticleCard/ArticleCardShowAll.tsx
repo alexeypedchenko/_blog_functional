@@ -2,11 +2,16 @@ import React, { FC } from "react";
 import Link from "next/link";
 import styles from "./ArticleCard.module.css";
 import Icon from "@/components/UI/Icon";
+import clsx from "clsx";
 
 const ArticleCardShowAll: FC = () => {
   return (
-    <div className={styles.сard}>
-      <Link className={styles.link} href={`/articles`}>
+    <Link className={clsx(styles.сard, styles.сardAll)} href={`/articles`}>
+      <div className={styles.info}>
+        <p>Смотреть все</p>
+        <p>{new Date().toLocaleDateString()}</p>
+      </div>
+      <div className={styles.link}>
         <h3 className={styles.title}>Show All</h3>
         <div className="flex justify-end">
           <Icon
@@ -16,8 +21,8 @@ const ArticleCardShowAll: FC = () => {
             className="-rotate-45"
           />
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 

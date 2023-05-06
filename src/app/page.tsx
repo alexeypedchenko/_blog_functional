@@ -1,7 +1,8 @@
 import { getLatestArticles } from "@/api/articles.api";
 import { getLatestCategories } from "@/api/categories.api";
 import Hero from "@/components/Hero/Hero";
-import Latest from "@/components/Latest/LatestArticles";
+import LatestArticles from "@/components/Latest/LatestArticles";
+import LatestCategories from "@/components/Latest/LatestCategories";
 import React from "react";
 
 const page = async () => {
@@ -11,7 +12,8 @@ const page = async () => {
   return (
     <div>
       <Hero />
-      <Latest list={articles} />
+      <LatestArticles list={articles} />
+      <LatestCategories list={categories} />
     </div>
   );
 };

@@ -1,24 +1,21 @@
 import React, { FC } from "react";
-import { IArticle } from "@/types/ArticleType";
-import ArticleCard from "../Card/ArticleCard/ArticleCard";
+import CategoryCard from "../Card/CategoryCard/CategoryCard";
 import Card from "../Card/Card";
 import Icon from "../UI/Icon";
-import ArticleCardShowAll from "../Card/ArticleCard/ArticleCardShowAll";
 
 type Props = {
-  list: IArticle[];
+  list: any[];
 };
 
-const Latest: FC<Props> = ({ list }) => {
+const LatestCategories: FC<Props> = ({ list }) => {
   return (
     <div className="my-[100px]">
-      <h2 className="h2 mb-5">Статьи</h2>
+      <h2 className="h2 mb-5">Категории</h2>
       <div className="grid grid-cols-3 gap-y-5 gap-x-10">
         {list?.map((item) => (
-          <ArticleCard key={item._id} {...item} />
+          <CategoryCard key={item._id} {...item} />
         ))}
-        <ArticleCardShowAll />
-        {/* <Card title={"Show all"} url={"articles"}>
+        <Card title={"Show all"} url={"categories"}>
           <div className="flex justify-end">
             <Icon
               width={48}
@@ -27,10 +24,10 @@ const Latest: FC<Props> = ({ list }) => {
               className="-rotate-45"
             />
           </div>
-        </Card> */}
+        </Card>
       </div>
     </div>
   );
 };
 
-export default Latest;
+export default LatestCategories;

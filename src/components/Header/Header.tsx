@@ -19,10 +19,10 @@ const links = [
 
 const Header = () => {
   return (
-    <header className="sticky top-0 mb-20 h-[60px] flex items-center bg-white">
+    <header className="sticky top-0 mb-20 pt-5 pb-[5px] flex items-center  bg-white">
       <Link href="/" className={styles.logo}>
         <span>Finance</span>
-        .pro
+        <span>.pro</span>
       </Link>
       <nav className="flex gap-10 items-center">
         {links.map((link, idx) => (
@@ -35,6 +35,9 @@ const Header = () => {
           </Link>
         ))}
       </nav>
+      <Link className="btn ml-auto" href="/contacts">
+        Контакты
+      </Link>
     </header>
   );
 };

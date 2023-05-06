@@ -1,9 +1,8 @@
 import { getCategory } from "@/api/categories.api";
 import { getArticlesByCat } from "@/api/articles.api";
-import Article from "@/components/Article/Article";
-import Pagination from "@/components/Pagination/Pagination";
-import Breadcrumbs from "@/components/UI/Breadcrumbs/Breadcrumbs";
 import { PageProps } from "@/types/PageProps";
+import Pagination from "@/components/Pagination/Pagination";
+import ArticleCard from "@/components/Card/ArticleCard/ArticleCard";
 
 const PAGE_SIZE = 3;
 
@@ -29,23 +28,14 @@ const page = async ({ params, searchParams }: PageProps) => {
 
   return (
     <div>
-      <Breadcrumbs
-        list={[
-          {
-            name: "Категории",
-            href: "/categories",
-          },
-        ]}
-        current={category.title}
-      />
-      <div className="mb-10">
-        <h1 className="text-2xl font-bold mb-5">{category.title}</h1>
-        <p>{category.description}</p>
+      <div className="mb-20">
+        <h1 className="h1">{category.title}</h1>
+        <p className="caption">{category.description}</p>
       </div>
 
-      <div className="grid grid-cols-3 gap-10">
+      <div className="grid grid-cols-3 gap-y-5 gap-x-10">
         {articles?.map((item: any) => (
-          <Article key={item._id} {...item} />
+          <ArticleCard key={item._id} {...item} />
         ))}
       </div>
 
