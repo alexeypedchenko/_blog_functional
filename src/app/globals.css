@@ -20,6 +20,11 @@
   --hero-bottom-padding: 6.25rem;
 }
 
+html,
+body {
+  scroll-behavior: smooth;
+}
+
 body {
   padding-left: var(--page-padding);
   padding-right: var(--page-padding);
@@ -27,6 +32,7 @@ body {
   margin: 0 auto;
   color: var(--c-primary);
   padding-bottom: 100px;
+  /* scroll-behavior: smooth; */
 }
 
 .h1 {
@@ -35,9 +41,19 @@ body {
 .h2 {
   font-size: 100px;
 }
+.txt {
+  font-size: 24px;
+}
 .caption {
   font-size: 24px;
   max-width: var(--container-size);
+}
+
+.link {
+  font-size: 20px;
+}
+.link:hover {
+  text-decoration: underline;
 }
 
 .loader {

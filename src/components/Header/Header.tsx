@@ -19,7 +19,8 @@ const links = [
 
 const Header = () => {
   return (
-    <header className="sticky top-0 mb-20 pt-5 pb-[5px] flex items-center  bg-white">
+    <header className="mb-20 pt-5 pb-[5px] flex items-center  bg-white">
+      {/* sticky top-0  */}
       <Link href="/" className={styles.logo}>
         <span>Finance</span>
         <span>.pro</span>

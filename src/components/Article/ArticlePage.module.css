@@ -1,0 +1,21 @@
+.date {
+  text-align: right;
+  margin-top: -24px;
+}
+.info {
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  padding: 10px 0;
+  margin-bottom: 40px;
+  border-top: 1px solid var(--c-primary);
+  border-bottom: 1px solid var(--c-primary);
+}
+.info > div {
+  white-space: nowrap;
+}
+.content {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 300px auto 200px;
+}

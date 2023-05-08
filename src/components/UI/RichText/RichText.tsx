@@ -4,7 +4,7 @@ import styles from "./RichText.module.css";
 
 const RichText = ({ body }: { body: any }) => {
   return (
-    <div className={styles.box}>
+    <div id="rich-text" className={styles.box}>
       <PortableText value={body} />
     </div>
   );

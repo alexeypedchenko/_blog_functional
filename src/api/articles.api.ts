@@ -76,17 +76,42 @@ export const getArticlesByCat = async (
   return articles;
 };
 
+// *[_type == $type && slug.current == $slug]{
+//   "current": {
+//     "slug": slug.current, title, publicReleaseDate, "tags": tags[]->tag
+//   },
+// "previous": *[_type == $type && count((tags[]->tag)[@ in ^.^.tags[]->tag]) > 0 && ^.publicReleaseDate > publicReleaseDate]|order(publicReleaseDate desc)[0]{
+//     "slug": slug.current, title, publicReleaseDate, "tags": tags[]->tag
+// },
+// "next": *[_type == $type && count((tags[]->tag)[@ in ^.^.tags[]->tag]) > 0 && ^.publicReleaseDate < publicReleaseDate]|order(publicReleaseDate asc)[0]{
+//     "slug": slug.current, title, publicReleaseDate, "tags": tags[]->tag
+// },
+// }|order(publicReleaseDate)[0]
+
 export const getArticle = async (slug: string) => {
-  const GROQ = `*[_type == "article" && slug.current == "${slug}"][0] {
-    title,
-    description,
-    category -> {
+  const type = "article";
+  const GROQ = `*[_type == $type && slug.current == "${slug}"][0] {
+    "current": {
       title,
+      description,
+      category -> {
+        title,
+        "slug": slug.current
+      },
+      publishedAt,
+      body
+    },
+    "previous": *[_type == $type && ${isPublished} && ^.publishedAt > publishedAt]|order(publishedAt desc)[0]{
+      title,
+      description,
       "slug": slug.current
     },
-    publishedAt,
-    body
+    "next": *[_type == $type && ${isPublished} && ^.publishedAt < publishedAt]|order(publishedAt asc)[0]{
+      title,
+      description,
+      "slug": slug.current
+    },
   }`;
-  const article = await clientFetch(GROQ);
+  const article = await clientFetch(GROQ, { type });
   return article;
 };
