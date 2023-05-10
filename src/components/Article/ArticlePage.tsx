@@ -38,12 +38,12 @@ const ArticlePage: FC<Props> = ({ current, previous, next }) => {
         {new Date(publishedAt).toLocaleDateString()}
       </p>
       <div className={styles.info}>
-        <p className="txt">{description}</p>
         <div>
           <Link className="link" href={`/categories/${category.slug}`}>
             #{category.title}
           </Link>
         </div>
+        <p className="txt">{description}</p>
       </div>
 
       {body && (
