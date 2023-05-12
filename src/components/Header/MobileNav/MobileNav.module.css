@@ -1,0 +1,33 @@
+.head {
+  @apply hidden absolute top-0 left-0 w-full p-5 pb-[5px] items-center justify-between;
+}
+.nav {
+  --mobile-header-height: 49px;
+  padding: 20px;
+  position: fixed;
+  top: var(--mobile-header-height);
+  left: 0;
+  width: 100%;
+  height: calc(100% - var(--mobile-header-height));
+  opacity: 0;
+  pointer-events: none;
+  background: #fff;
+}
+.navOpen {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.links {
+  @apply flex flex-col gap-5 items-start;
+}
+
+@media (max-width: 600px) {
+  .head {
+    @apply flex;
+  }
+}
+@media (max-width: 480px) {
+}
+@media (max-width: 320px) {
+}

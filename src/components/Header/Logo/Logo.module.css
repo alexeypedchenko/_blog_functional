@@ -1,0 +1,33 @@
+.logo {
+  @apply text-xl font-bold flex;
+}
+.logo span {
+  transition: 0.15s;
+}
+
+.logo span:nth-child(1) {
+  background: linear-gradient(to right, var(--c-primary), var(--c-primary))
+    no-repeat right;
+  background-size: 100%;
+  color: #fff;
+}
+.logo:hover span:nth-child(1) {
+  background-size: 0%;
+  color: var(--c-primary);
+}
+
+.logo span:nth-child(2) {
+  background: linear-gradient(to right, var(--c-primary), var(--c-primary))
+    no-repeat left;
+  background-size: 0%;
+}
+.logo:hover span:nth-child(2) {
+  background-size: 100%;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    @apply text-base;
+  }
+}

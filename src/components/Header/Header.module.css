@@ -1,27 +1,28 @@
-.logo {
-  @apply text-xl font-bold mr-40 flex;
+.header {
+  @apply mb-20 pt-5 pb-[5px] flex items-center bg-white gap-5;
 }
-.logo span {
-  transition: 0.15s;
+.nav {
+  @apply flex gap-10 items-center mr-auto ml-40;
 }
-
-.logo span:nth-child(1) {
-  background: linear-gradient(to right, var(--c-primary), var(--c-primary))
-    no-repeat right;
-  background-size: 100%;
-  color: #fff;
+@media (max-width: 1024px) {
+  .header {
+    justify-content: space-between;
+  }
+  .nav {
+    margin: 0;
+  }
 }
-.logo:hover span:nth-child(1) {
-  background-size: 0%;
-  color: var(--c-primary);
+@media (max-width: 768px) {
+  .nav {
+    @apply gap-5;
+  }
 }
-
-.logo span:nth-child(2) {
-  background: linear-gradient(to right, var(--c-primary), var(--c-primary))
-    no-repeat left;
-  background-size: 0%;
+@media (max-width: 600px) {
+  .header {
+    @apply hidden;
+  }
 }
-.logo:hover span:nth-child(2) {
-  background-size: 100%;
-  color: #fff;
+@media (max-width: 480px) {
+}
+@media (max-width: 320px) {
 }

@@ -1,45 +1,28 @@
-import React from "react";
+import clsx from "clsx";
 import Link from "next/link";
+import Logo from "./Logo/Logo";
+import MobileNav from "./MobileNav/MobileNav";
 import styles from "./Header.module.css";
-
-const links = [
-  {
-    name: "Главная",
-    href: "/",
-  },
-  {
-    name: "Статьи",
-    href: "/articles",
-  },
-  {
-    name: "Категории",
-    href: "/categories",
-  },
-];
+import { links } from "./constants/links";
 
 const Header = () => {
   return (
-    <header className="mb-20 pt-5 pb-[5px] flex items-center  bg-white">
-      {/* sticky top-0  */}
-      <Link href="/" className={styles.logo}>
-        <span>Finance</span>
-        <span>.pro</span>
-      </Link>
-      <nav className="flex gap-10 items-center">
-        {links.map((link, idx) => (
-          <Link
-            className="text-xl cursor-pointer hover:underline"
-            key={idx}
-            href={link.href}
-          >
-            {link.name}
-          </Link>
-        ))}
-      </nav>
-      <Link className="btn ml-auto" href="/contacts">
-        Контакты
-      </Link>
-    </header>
+    <>
+      <header className={styles.header}>
+        <Logo />
+        <nav className={styles.nav}>
+          {links.map((link, idx) => (
+            <Link className="link" key={idx} href={link.href}>
+              {link.name}
+            </Link>
+          ))}
+        </nav>
+        <Link className={clsx("btn", styles.contactsBtn)} href="/contacts">
+          Контакты
+        </Link>
+      </header>
+      <MobileNav />
+    </>
   );
 };
 

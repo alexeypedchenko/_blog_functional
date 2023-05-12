@@ -35,6 +35,10 @@ body {
   /* scroll-behavior: smooth; */
 }
 
+button {
+  outline: none;
+}
+
 .h1 {
   font-size: 140px;
 }
@@ -50,10 +54,15 @@ body {
 }
 
 .link {
-  font-size: 20px;
+  /* font-size: 20px; */
+  @apply text-xl;
 }
 .link:hover {
   text-decoration: underline;
+}
+
+.card-grid {
+  @apply grid grid-cols-3 gap-y-5 gap-x-10;
 }
 
 .loader {
@@ -87,4 +96,23 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+@media (max-width: 1024px) {
+}
+@media (max-width: 768px) {
+  body {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .link {
+    @apply text-base;
+  }
+  .btn {
+    @apply text-base;
+  }
+}
+@media (max-width: 480px) {
+}
+@media (max-width: 320px) {
 }

@@ -30,7 +30,7 @@ const page = async ({ params, searchParams }: PageProps) => {
     <div>
       <h1 className="h1">Статьи</h1>
 
-      <div className="grid grid-cols-3 gap-y-5 gap-x-10">
+      <div className="card-grid">
         {articles?.map((item: any) => (
           <ArticleCard key={item._id} {...item} />
         ))}
