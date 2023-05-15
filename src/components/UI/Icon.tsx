@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React, { FC } from "react";
 
 type IconName = "arrow-right" | "close" | "menu";
@@ -11,7 +12,7 @@ type Props = {
 
 const Icon: FC<Props> = ({ width = 24, height = 24, className, name }) => {
   return (
-    <svg width={width} height={height} className={className}>
+    <svg width={width} height={height} className={clsx("icon", className)}>
       <use xlinkHref={`/icons-sprite.svg#icon-${name}`} />
     </svg>
   );

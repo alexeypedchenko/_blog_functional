@@ -4,6 +4,7 @@ import Link from "next/link";
 import RichText from "../../UI/RichText/RichText";
 import ArticleContent from "./../ArticleContent";
 import Card, { PlaceholderCard } from "../../Card/Card";
+import ContentAside from "./ContentAside";
 import Icon from "../../UI/Icon";
 
 type AdditionalArticle = {
@@ -34,9 +35,6 @@ const ArticlePage: FC<Props> = ({ current, previous, next }) => {
     <div>
       <h1 className="h1">{title}</h1>
 
-      <p className={styles.date}>
-        {new Date(publishedAt).toLocaleDateString()}
-      </p>
       <div className={styles.info}>
         <div>
           <Link className="link" href={`/categories/${category.slug}`}>
@@ -44,17 +42,20 @@ const ArticlePage: FC<Props> = ({ current, previous, next }) => {
           </Link>
         </div>
         <p className="text">{description}</p>
+        <p className={styles.date}>
+          {new Date(publishedAt).toLocaleDateString()}
+        </p>
       </div>
 
       {body && (
         <div className={styles.content}>
           <ArticleContent />
           <RichText body={body} />
-          <div>ads</div>
+          <ContentAside />
         </div>
       )}
       {(previous || next) && (
-        <div className="grid grid-cols-2 gap-10 mt-10">
+        <div className={styles.otherArticles}>
           {previous ? (
             <Card {...previous} url="articles" className="text-right">
               <div className="mt-5 flex items-start justify-between">

@@ -1,13 +1,20 @@
 @import "@/styles/mixins";
 
 .date {
+  position: absolute;
+  top: -24px;
+  right: 0;
+  // transform: translate(0, -100%);
   text-align: right;
-  margin-top: -24px;
+  @include max(600) {
+    top: 11px;
+  }
 }
 .info {
+  position: relative;
   display: grid;
   gap: 40px;
-  grid-template-columns: 300px auto 200px;
+  grid-template-columns: 250px 1fr 300px;
   /* display: flex;
   gap: 40px;
   justify-content: space-between; */
@@ -18,7 +25,10 @@
 
   @include max(xl) {
     gap: 20px;
-    grid-template-columns: 200px auto;
+    grid-template-columns: 200px 1fr;
+  }
+  @include max(600) {
+    grid-template-columns: 1fr;
   }
 }
 .info > div {
@@ -27,9 +37,32 @@
 .content {
   display: grid;
   gap: 40px;
-  grid-template-columns: 300px auto 200px;
+  grid-template-columns: 250px 1fr 300px;
   @include max(xl) {
     gap: 20px;
-    grid-template-columns: 200px auto 200px;
+    grid-template-columns: 200px 1fr 300px;
+  }
+  @include max(lg) {
+    & > div:nth-child(1) {
+      display: none;
+    }
+    grid-template-columns: 1fr 300px;
+  }
+  @include max(md) {
+    grid-template-columns: 1fr 200px;
+  }
+  @include max(600) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.otherArticles {
+  @apply grid grid-cols-2 gap-10 mt-10;
+  @include max(600) {
+    @apply grid-cols-1;
+
+    & > div {
+      display: none;
+    }
   }
 }

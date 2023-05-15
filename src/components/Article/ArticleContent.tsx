@@ -1,10 +1,7 @@
 "use client";
-import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
-import React, { createElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const ArticleContent = () => {
-  const pathName = usePathname();
   const [titles, setTitles] = useState<
     { tag: string; content: string; id: string }[]
   >([]);
@@ -14,7 +11,9 @@ const ArticleContent = () => {
     const all = richText?.querySelectorAll("h2, h3, h4, h5, h6");
     const arr: any[] = [];
     all?.forEach((el, idx) => {
-      const id = `${el.textContent?.replaceAll(" ", "-") || ""}-${idx}`;
+      const id = `${
+        el.textContent?.replaceAll(" ", "-") || ""
+      }-${idx}`.toLocaleLowerCase();
       el.id = id;
       arr.push({
         tag: el.tagName,

@@ -46,6 +46,10 @@ button {
   outline: none;
 }
 
+.icon {
+  fill: currentColor;
+}
+
 .h1 {
   font-size: 140px;
   @include max(lg) {
@@ -54,9 +58,9 @@ button {
   @include max(md) {
     font-size: 80px;
   }
-  // @include max(sm) {
-  //   font-size: 60px;
-  // }
+  @include max(sm) {
+    font-size: 60px;
+  }
 }
 .h2 {
   font-size: 100px;
@@ -66,9 +70,9 @@ button {
   @include max(md) {
     font-size: 60px;
   }
-  // @include max(sm) {
-  //   font-size: 40px;
-  // }
+  @include max(sm) {
+    font-size: 40px;
+  }
 }
 
 .text {
