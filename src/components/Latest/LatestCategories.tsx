@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import CategoryCard from "../Card/CategoryCard/CategoryCard";
 import Card from "../Card/Card";
 import Icon from "../UI/Icon";
+import styles from "./Latest.module.scss";
 
 type Props = {
   list: any[];
@@ -9,7 +10,7 @@ type Props = {
 
 const LatestCategories: FC<Props> = ({ list }) => {
   return (
-    <div className="my-[100px]">
+    <div className={styles.wrap}>
       <h2 className="h2 mb-5">Категории</h2>
       <div className="card-grid">
         {list?.map((item) => (

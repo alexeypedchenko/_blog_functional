@@ -1,5 +1,5 @@
 .head {
-  @apply hidden absolute top-0 left-0 w-full p-5 pb-[5px] items-center justify-between;
+  @apply hidden sticky top-0 left-0 w-full pt-5 pb-[5px] items-center justify-between mb-10 bg-white;
 }
 .nav {
   --mobile-header-height: 49px;
@@ -17,11 +17,21 @@
   opacity: 1;
   pointer-events: all;
 }
-
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .links {
   @apply flex flex-col gap-5 items-start;
 }
 
+@media (min-width: 601px) {
+  .nav {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
 @media (max-width: 600px) {
   .head {
     @apply flex;

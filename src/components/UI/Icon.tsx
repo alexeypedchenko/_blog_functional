@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-type IconName = "arrow-right";
+type IconName = "arrow-right" | "close" | "menu";
 
 type Props = {
   width?: number;

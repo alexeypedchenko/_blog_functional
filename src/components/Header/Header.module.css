@@ -1,5 +1,5 @@
 .header {
-  @apply mb-20 pt-5 pb-[5px] flex items-center bg-white gap-5;
+  @apply sticky mb-20 pt-5 pb-[5px] flex items-center bg-white gap-5;
 }
 .nav {
   @apply flex gap-10 items-center mr-auto ml-40;
@@ -7,6 +7,7 @@
 @media (max-width: 1024px) {
   .header {
     justify-content: space-between;
+    margin-bottom: 40px;
   }
   .nav {
     margin: 0;

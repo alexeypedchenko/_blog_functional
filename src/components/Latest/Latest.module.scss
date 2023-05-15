@@ -1,0 +1,14 @@
+@import "@/styles/mixins";
+
+.wrap {
+  margin-top: 100px;
+  @include max(lg) {
+    margin-top: 80px;
+  }
+  @include max(md) {
+    margin-top: 80px;
+  }
+  @include max(sm) {
+    margin-top: 40px;
+  }
+}

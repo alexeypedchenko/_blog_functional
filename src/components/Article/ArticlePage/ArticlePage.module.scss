@@ -1,3 +1,5 @@
+@import "@/styles/mixins";
+
 .date {
   text-align: right;
   margin-top: -24px;
@@ -13,6 +15,11 @@
   margin-bottom: 40px;
   border-top: 1px solid var(--c-primary);
   border-bottom: 1px solid var(--c-primary);
+
+  @include max(xl) {
+    gap: 20px;
+    grid-template-columns: 200px auto;
+  }
 }
 .info > div {
   white-space: nowrap;
@@ -21,4 +28,8 @@
   display: grid;
   gap: 40px;
   grid-template-columns: 300px auto 200px;
+  @include max(xl) {
+    gap: 20px;
+    grid-template-columns: 200px auto 200px;
+  }
 }

@@ -1,0 +1,33 @@
+@import "@/styles/mixins";
+
+.title {
+  font-size: 160px;
+  @include max(xl) {
+    font-size: 140px;
+  }
+  @include max(lg) {
+    font-size: 120px;
+  }
+  @include max(900) {
+    font-size: 100px;
+  }
+  @include max(md) {
+    line-height: 1;
+    font-size: 80px;
+    margin-bottom: 20px;
+  }
+  @include max(sm) {
+    font-size: 60px;
+  }
+}
+
+.caption {
+  max-width: 800px;
+  @include max(lg) {
+    max-width: 100%;
+    margin-right: 20%;
+  }
+  @include max(sm) {
+    margin-right: 0;
+  }
+}

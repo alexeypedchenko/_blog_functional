@@ -1,3 +1,5 @@
+@import "@/styles/mixins";
+
 .сard {
   border-top: 1px solid var(--c-primary);
   padding-top: 10px;
@@ -5,6 +7,9 @@
 }
 .row {
   @apply grid grid-cols-2;
+  @include max(600) {
+    @apply grid-cols-1;
+  }
 }
 .сard:hover .title {
   text-decoration: underline;

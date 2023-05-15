@@ -18,7 +18,7 @@ const ArticleContent = () => {
       el.id = id;
       arr.push({
         tag: el.tagName,
-        content: `${idx + 1}. ${el.textContent}`,
+        content: el.textContent,
         id,
       });
     });
@@ -32,7 +32,7 @@ const ArticleContent = () => {
   return (
     <div>
       <div className="top-5 sticky flex flex-col gap-2">
-        <p className="txt">Содержание:</p>
+        <p className="text">Содержание:</p>
         {titles?.map((el, idx) => (
           <a key={idx} href={`#${el.id}`} className="link">
             {el.content}

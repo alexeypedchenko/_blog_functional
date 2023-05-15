@@ -1,6 +1,6 @@
 import { PortableText } from "@portabletext/react";
 import React from "react";
-import styles from "./RichText.module.css";
+import styles from "./RichText.module.scss";
 
 const RichText = ({ body }: { body: any }) => {
   return (

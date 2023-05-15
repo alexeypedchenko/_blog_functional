@@ -1,0 +1,38 @@
+@import "@/styles/mixins";
+
+.box {
+  font-size: 20px;
+  @include max(lg) {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 2.2em;
+  }
+  h2 {
+    font-size: 2em;
+  }
+  h3 {
+    font-size: 1.8em;
+  }
+  h4 {
+    font-size: 1.6em;
+  }
+  h5 {
+    font-size: 1.4em;
+  }
+  h6 {
+    font-size: 1.2em;
+  }
+  p {
+    min-height: 1em;
+  }
+  ul {
+    list-style-type: disc;
+    margin-left: 1.2em;
+  }
+  ol {
+    list-style-type: decimal;
+    margin-left: 1.2em;
+  }
+}

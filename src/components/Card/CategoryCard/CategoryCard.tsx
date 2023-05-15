@@ -1,7 +1,7 @@
-import React, { FC, PropsWithChildren } from "react";
+import React, { FC } from "react";
 import Link from "next/link";
-import styles from "./CategoryCard.module.css";
 import clsx from "clsx";
+import styles from "./CategoryCard.module.scss";
 
 type Props = {
   title: string;

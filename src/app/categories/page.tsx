@@ -8,7 +8,7 @@ const page = async () => {
   return (
     <div>
       <h1 className="h1">Категории</h1>
-      <div className="grid grid-cols-1 gap-y-5 gap-x-10">
+      <div>
         {categories?.map((item: any) => (
           <CategoryCard key={item._id} {...item} row />
         ))}

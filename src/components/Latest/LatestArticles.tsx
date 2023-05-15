@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import { IArticle } from "@/types/ArticleType";
 import ArticleCard from "../Card/ArticleCard/ArticleCard";
-import Card from "../Card/Card";
-import Icon from "../UI/Icon";
 import ArticleCardShowAll from "../Card/ArticleCard/ArticleCardShowAll";
+
+import styles from "./Latest.module.scss";
 
 type Props = {
   list: IArticle[];
@@ -11,7 +11,7 @@ type Props = {
 
 const Latest: FC<Props> = ({ list }) => {
   return (
-    <div className="my-[100px]">
+    <div className={styles.wrap}>
       <h2 className="h2 mb-5">Статьи</h2>
       <div className="card-grid">
         {list?.map((item) => (

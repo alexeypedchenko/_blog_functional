@@ -1,5 +1,5 @@
 import { getArticle, getArticleSlugList } from "@/api/articles.api";
-import ArticlePage from "@/components/Article/ArticlePage";
+import ArticlePage from "@/components/Article/ArticlePage/ArticlePage";
 import { PageProps } from "@/types/PageProps";
 
 // Return a list of `params` to populate the [slug] dynamic segment

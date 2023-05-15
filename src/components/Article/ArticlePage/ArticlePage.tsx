@@ -1,10 +1,10 @@
 import React, { FC } from "react";
-import styles from "./ArticlePage.module.css";
+import styles from "./ArticlePage.module.scss";
 import Link from "next/link";
-import RichText from "../UI/RichText/RichText";
-import ArticleContent from "./ArticleContent";
-import Card, { PlaceholderCard } from "../Card/Card";
-import Icon from "../UI/Icon";
+import RichText from "../../UI/RichText/RichText";
+import ArticleContent from "./../ArticleContent";
+import Card, { PlaceholderCard } from "../../Card/Card";
+import Icon from "../../UI/Icon";
 
 type AdditionalArticle = {
   title: string;
@@ -43,7 +43,7 @@ const ArticlePage: FC<Props> = ({ current, previous, next }) => {
             #{category.title}
           </Link>
         </div>
-        <p className="txt">{description}</p>
+        <p className="text">{description}</p>
       </div>
 
       {body && (
