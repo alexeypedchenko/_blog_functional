@@ -1,0 +1,44 @@
+@import "@/styles/mixins";
+
+.footer {
+  display: flex;
+  gap: 20px;
+  border-top: 1px solid var(--c-primary);
+  padding: 20px 0 40px;
+  margin-top: 80px;
+
+  @include max(md) {
+    flex-wrap: wrap;
+    margin-top: 60px;
+  }
+  @include max(sm) {
+    flex-direction: column;
+    margin-top: 40px;
+  }
+
+  & > div {
+    width: 25%;
+    @include max(md) {
+      width: calc(50% - 10px);
+    }
+    @include max(sm) {
+      width: 100%;
+    }
+    &:nth-child(1) {
+      @include max(md) {
+        order: 3;
+      }
+      @include max(sm) {
+        order: 4;
+      }
+    }
+    &:nth-child(4) {
+      @include max(md) {
+        order: 4;
+      }
+      @include max(sm) {
+        order: 3;
+      }
+    }
+  }
+}

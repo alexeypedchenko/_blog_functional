@@ -22,19 +22,13 @@
   --hero-bottom-padding: 6.25rem;
 }
 
-html,
-body {
-  scroll-behavior: smooth;
-}
-
 body {
   padding-left: var(--page-padding);
   padding-right: var(--page-padding);
   max-width: min(100%, var(--max-container));
   margin: 0 auto;
   color: var(--c-primary);
-  padding-bottom: 100px;
-  /* scroll-behavior: smooth; */
+  scroll-behavior: smooth;
 
   @include max(lg) {
     padding-left: 20px;
