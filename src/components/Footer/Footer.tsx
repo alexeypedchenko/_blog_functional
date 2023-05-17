@@ -23,26 +23,32 @@ const links = [
 const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <div className="flex flex-col gap-5 items-start justify-between">
+      <div className={styles.links}>
+        <div className="flex flex-col gap-5 items-start">
+          <p className="text">Контент</p>
+          {headerLinks.map((link) => (
+            <Link className="link !text-base" key={link.href} href={link.href}>
+              {link.name}
+            </Link>
+          ))}
+        </div>
+        <div className="flex flex-col gap-5 items-start">
+          <p className="text">Информация</p>
+          {links.map((link) => (
+            <Link className="link !text-base" key={link.href} href={link.href}>
+              {link.name}
+            </Link>
+          ))}
+        </div>
+        <div></div>
+        <div className="flex flex-col gap-5">
+          <p className="text">Сообщество</p>
+          <Telegram className="w-full" />
+        </div>
+      </div>
+      <div className="flex flex-col gap-5 mt-10 items-center text-center">
         <Logo />
         <p>© Все права защищены</p>
-      </div>
-      <div className="flex flex-col gap-5">
-        {headerLinks.map((link) => (
-          <Link className="link !text-base" key={link.href} href={link.href}>
-            {link.name}
-          </Link>
-        ))}
-      </div>
-      <div className="flex flex-col gap-5">
-        {links.map((link) => (
-          <Link className="link !text-base" key={link.href} href={link.href}>
-            {link.name}
-          </Link>
-        ))}
-      </div>
-      <div className="flex">
-        <Telegram className="w-full" />
       </div>
     </footer>
   );

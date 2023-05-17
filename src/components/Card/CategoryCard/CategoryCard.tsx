@@ -10,7 +10,8 @@ type Props = {
   row?: boolean;
 };
 
-const CategoryCard: FC<Props> = ({ title, description, slug, row }) => {
+const CategoryCard: FC<Props> = (props) => {
+  const { title, description, slug, row } = props;
   return (
     <Link
       href={`/categories/${slug}`}
